@@ -1,0 +1,22 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: docker login registry-1.docker.io -u rsoni9898 -p Rutvik@123
+      run: docker build . --file static-site/Dockerfile --tag rsoni9898:$(date +%s)
+    - name: Build the Docker image
+      run: docker build . --file static-site/Dockerfile --tag rsoni9898:$(date +%s)
+    - name: Build the Docker image
+      run: docker push rsoni9898:$(date +%s)
