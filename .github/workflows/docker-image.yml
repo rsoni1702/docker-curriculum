@@ -14,9 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: docker login
-      run: docker login registry-1.docker.io -u rsoni9898 -p Rutvik@123
     - name: Build the Docker image
       run: docker build . --file static-site/Dockerfile --tag rsoni9898/test:latest
     - name: Build the Docker image
-      run: docker push rsoni9898/test:latest
+      run: docker login registry-1.docker.io -u rsoni9898 -p Rutvik@123 && docker push rsoni9898/test:latest
